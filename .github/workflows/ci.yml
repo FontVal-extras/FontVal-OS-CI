@@ -17,6 +17,8 @@ jobs:
       - uses: actions/checkout@v4
         with:
           submodules: true
+      - run: dnf install -y make
+      - run: make -C FV USE_MONO_SECURITY=true
 
   ubuntu-job:
     runs-on: ubuntu-22.04
@@ -27,3 +29,5 @@ jobs:
       - run: cat /etc/os-release
       - run: sudo apt-get -y install fonts-\*
       - run: sudo apt-get -y install mono-complete
+      - run: sudo apt-get -y install gmake
+      - run: make -C FV USE_MONO_SECURITY=true
