@@ -19,8 +19,8 @@ jobs:
           submodules: true
       - run: dnf install -y make
       - run: make -C FV USE_MONO_SECURITY=true
-      - run: ln -s ${{ github.workspace }}/fedora-fc35-x64/* freetype6
-      - run: ln -s ${{ github.workspace }}/fedora-fc35-x64/* libfreetype.so.6
+#      - run: ln -s ${{ github.workspace }}/fedora-fc35-x64/* freetype6
+      - run: ln -s ${{ github.workspace }}/fedora-fc35-x64/libfreetype.so.6.18.0 libfreetype.so.6
       - run: ls -l freetype6 libfreetype.so.6
       - run: pwd
       - env:
@@ -39,8 +39,8 @@ jobs:
       - run: sudo apt-get -y install mono-complete
       - run: sudo apt-get -y install make
       - run: make -C FV USE_MONO_SECURITY=true
-      - run: ln -s ${{ github.workspace }}/ubuntu-18.04-x64/* freetype6
-      - run: ln -s ${{ github.workspace }}/ubuntu-18.04-x64/* libfreetype.so.6
+#      - run: ln -s ${{ github.workspace }}/ubuntu-18.04-x64/* freetype6
+      - run: ln -s ${{ github.workspace }}/ubuntu-18.04-x64/libfreetype.so.6.17.1 libfreetype.so.6
       - run: ls -l freetype6 libfreetype.so.6
       - run: pwd
       - env:
