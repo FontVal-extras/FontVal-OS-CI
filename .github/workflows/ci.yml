@@ -34,7 +34,7 @@ jobs:
       - run: cat /etc/os-release
       - run: sudo apt-get -y install fonts-\*
       - run: sudo apt-get -y install mono-complete
-      - run: sudo apt-get -y install gmake
+      - run: sudo apt-get -y install make
       - run: make -C FV USE_MONO_SECURITY=true
       - run: ln -s ${{ github.workspace }}/ubuntu-18.04-x64/* libfreetype.so
       - env:
