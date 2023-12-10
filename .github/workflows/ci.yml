@@ -1,0 +1,20 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  fedora-job:
+    runs-on: ubuntu-latest
+    container: fedora:39
+    steps:
+      - run: cat /etc/os-release
+      - run: dnf install -y --exclude root-fonts --skip-broken \*-opentype-fonts
+      - run: dnf install -y --exclude root-fonts --skip-broken \*-fonts \*-fonts-common \*-fonts-all
+
+  ubuntu-job:
+    runs-on: ubuntu-22.04
+    steps:
+      - run: cat /etc/os-release
+      - run: apt-get -y install \*-fonts
