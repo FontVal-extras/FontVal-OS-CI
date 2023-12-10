@@ -19,6 +19,11 @@ jobs:
           submodules: true
       - run: dnf install -y make
       - run: make -C FV USE_MONO_SECURITY=true
+      - run: ln -s ${{ github.workspace }}/fedora-fc35-x64/* libfreetype.so
+      - env:
+          LD_LIBRARY_PATH: ${{ github.workspace }}
+        run: mono FV/bin/FontValidator.exe -file /usr/share/wine/fonts/times.ttf -stdout
+
 
   ubuntu-job:
     runs-on: ubuntu-22.04
@@ -31,3 +36,7 @@ jobs:
       - run: sudo apt-get -y install mono-complete
       - run: sudo apt-get -y install gmake
       - run: make -C FV USE_MONO_SECURITY=true
+      - run: ln -s ${{ github.workspace }}/ubuntu-18.04-x64/* libfreetype.so
+      - env:
+          LD_LIBRARY_PATH: ${{ github.workspace }}
+        run: mono FV/bin/FontValidator.exe -file /usr/share/wine/fonts/times.ttf -stdout
