@@ -39,4 +39,4 @@ jobs:
       - run: ln -s ${{ github.workspace }}/ubuntu-18.04-x64/* libfreetype.so.6
       - env:
           LD_LIBRARY_PATH: ${{ github.workspace }}
-        run: mono FV/bin/FontValidator.exe -file /usr/share/wine/fonts/times.ttf -stdout
+        run: mono FV/bin/FontValidator.exe -file /usr/share/wine/fonts/wingding.ttf -stdout
