@@ -22,7 +22,7 @@ jobs:
       - run: ln -s ${{ github.workspace }}/bin/fedora-fc35-x64/libfreetype.so.6.18.0 libfreetype.so.6
       - run: ls -l libfreetype.so.6
       - run: pwd
-#      - run: cp -f ${{ github.workspace }}/fedora-fc35-x64/libfreetype.so.6.18.0 /usr/lib64/libfreetype.so.6
+      - run: cp -f ${{ github.workspace }}/bin/fedora-fc35-x64/libfreetype.so.6.18.0 /usr/lib64/libfreetype.so.6
       - env:
           LD_LIBRARY_PATH: ${{ github.workspace }}
         run: mono FV/bin/FontValidator.exe -file /usr/share/wine/fonts/times.ttf -stdout
@@ -42,7 +42,7 @@ jobs:
       - run: ln -s ${{ github.workspace }}/bin/ubuntu-18.04-x64/libfreetype.so.6.17.1 libfreetype.so.6
       - run: ls -l libfreetype.so.6
       - run: pwd
-#      - run: sudo cp -f ${{ github.workspace }}/ubuntu-18.04-x64/libfreetype.so.6.17.1 /usr/lib64/libfreetype.so.6
+      - run: sudo cp -f ${{ github.workspace }}/bin/ubuntu-18.04-x64/libfreetype.so.6.17.1 /usr/lib64/libfreetype.so.6
       - env:
           LD_LIBRARY_PATH: ${{ github.workspace }}
         run: mono FV/bin/FontValidator.exe -file /usr/share/wine/fonts/wingding.ttf -stdout
