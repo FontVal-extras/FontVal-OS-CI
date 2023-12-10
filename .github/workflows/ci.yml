@@ -19,10 +19,17 @@ jobs:
           submodules: true
       - run: dnf install -y make
       - run: make -C FV USE_MONO_SECURITY=true
+      - run: chmod a+rx ./FV/bin/fedora-fc35-x64/libfreetype.so.6.18.0
       - run: ln -s ./FV/bin/fedora-fc35-x64/libfreetype.so.6.18.0 libfreetype.so.6
       - env:
           LD_LIBRARY_PATH: $GITHUB_WORKSPACE
         run: find /usr/share/wine/fonts/times.ttf -exec mono FV/bin/FontValidator.exe -file {} -stdout \;
+#      - env:
+#          LD_LIBRARY_PATH: $GITHUB_WORKSPACE
+#        run: find /usr/share/wine/fonts/times.ttf -exec mono FV/bin/FontValidator.exe -test-parms 1.py -file {} -stdout \;
+#      - env:
+#          LD_LIBRARY_PATH: $GITHUB_WORKSPACE
+#        run: find /usr/share/ -type f -iname '*.[to]t[fc]' -exec mono FV/bin/FontValidator.exe -test-parms 1.py -file {} -stdout \; > /dev/null
 
 
   ubuntu-job:
@@ -39,4 +46,10 @@ jobs:
       - run: ln -s ${{ github.workspace }}/FV/bin/ubuntu-18.04-x64/libfreetype.so.6.17.1 libfreetype.so.6
       - env:
           LD_LIBRARY_PATH: ${{ github.workspace }}
-        run: find /usr/share/wine/fonts/wingding.ttf -exec mono FV/bin/FontValidator.exe -file /usr/share/wine/fonts/wingding.ttf -stdout \;
+        run: find /usr/share/wine/fonts/wingding.ttf -exec mono FV/bin/FontValidator.exe -file {} -stdout \;
+#      - env:
+#          LD_LIBRARY_PATH: ${{ github.workspace }}
+#        run: find /usr/share/wine/fonts/wingding.ttf -exec mono FV/bin/FontValidator.exe -type -test-parms 1.py -file {} -stdout \;
+#      - env:
+#          LD_LIBRARY_PATH: ${{ github.workspace }}
+#        run: find /usr/share/ -type f -iname '*.[to]t[fc]' -exec mono FV/bin/FontValidator.exe -test-parms 1.py -file {} -stdout \; > /dev/null
