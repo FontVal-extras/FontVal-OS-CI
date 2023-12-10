@@ -21,6 +21,7 @@ jobs:
       - run: make -C FV USE_MONO_SECURITY=true
       - run: chmod a+rx ./FV/bin/fedora-fc35-x64/libfreetype.so.6.18.0
       - run: ln -s ./FV/bin/fedora-fc35-x64/libfreetype.so.6.18.0 libfreetype.so.6
+      - run: cp -f ./FV/bin/fedora-fc35-x64/libfreetype.so.6.18.0 /usr/lib64/libfreetype.so.6
       - env:
           LD_LIBRARY_PATH: $GITHUB_WORKSPACE
         run: find /usr/share/wine/fonts/times.ttf -exec mono FV/bin/FontValidator.exe -file {} -stdout \;
@@ -30,6 +31,10 @@ jobs:
 #      - env:
 #          LD_LIBRARY_PATH: $GITHUB_WORKSPACE
 #        run: find /usr/share/ -type f -iname '*.[to]t[fc]' -exec mono FV/bin/FontValidator.exe -test-parms 1.py -file {} -stdout \; > /dev/null
+#  - uses: actions/upload-artifact@v3
+#    with:
+#      name: fedora
+#      path: temp-1
 
 
   ubuntu-job:
@@ -53,3 +58,7 @@ jobs:
 #      - env:
 #          LD_LIBRARY_PATH: ${{ github.workspace }}
 #        run: find /usr/share/ -type f -iname '*.[to]t[fc]' -exec mono FV/bin/FontValidator.exe -test-parms 1.py -file {} -stdout \; > /dev/null
+#  - uses: actions/upload-artifact@v3
+#    with:
+#      name: ubuntu
+#      path: temp-1
