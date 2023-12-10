@@ -20,8 +20,7 @@ jobs:
       - run: dnf install -y make
       - run: make -C FV USE_MONO_SECURITY=true
       - run: dnf upgrade -y AR/RPMS/x86_64/freetype-2.13.2-2p.fc38.x86_64.rpm
-      - env:
-        run: find /usr/share/wine/fonts/times.ttf -exec mono FV/bin/FontValidator.exe -file {} -stdout \;
+      - run: find /usr/share/wine/fonts/times.ttf -exec mono FV/bin/FontValidator.exe -file {} -stdout \;
 #      - env:
 #          LD_LIBRARY_PATH: $GITHUB_WORKSPACE
 #        run: find /usr/share/wine/fonts/times.ttf -exec mono FV/bin/FontValidator.exe -test-parms 1.py -file {} -stdout \;
