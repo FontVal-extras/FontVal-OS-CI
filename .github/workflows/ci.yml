@@ -7,7 +7,7 @@ on:
 jobs:
   fedora-job:
     runs-on: ubuntu-latest
-    container: fedora:35
+    container: fedora:39
     steps:
       - run: cat /etc/os-release
       - run: dnf install -y git
@@ -19,15 +19,8 @@ jobs:
           submodules: true
       - run: dnf install -y make
       - run: make -C FV USE_MONO_SECURITY=true
-      - run: chmod a+rx $GITHUB_WORKSPACE/FV/bin/fedora-fc35-x64/libfreetype.so.6.18.0
-#      - run: cp ./FV/bin/fedora-fc35-x64/libfreetype.so.6.18.0 libfreetype.so.6
-#      - run: cp ./FV/bin/fedora-fc35-x64/libfreetype.so.6.18.0 ./FV/bin/libfreetype.so.6
-      - run: cp ./FV/bin/fedora-fc35-x64/libfreetype.so.6.18.0 /usr/lib64/libfreetype.so.6
-#      - run: cp ./FV/bin/fedora-fc35-x64/libfreetype.so.6.18.0 /usr/lib64/libfreetype.so
-#      - run: dnf install -y libselinux-utils
-#      - run: setenforce Permissive
+      - run: dnf upgrade -y AR/RPMS/x86_64/freetype-2.13.2-2p.fc38.x86_64.rpm
       - env:
-          LD_LIBRARY_PATH: $GITHUB_WORKSPACE
         run: find /usr/share/wine/fonts/times.ttf -exec mono FV/bin/FontValidator.exe -file {} -stdout \;
 #      - env:
 #          LD_LIBRARY_PATH: $GITHUB_WORKSPACE
