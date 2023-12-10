@@ -21,11 +21,12 @@ jobs:
       - run: make -C FV USE_MONO_SECURITY=true
       - run: dnf upgrade -y AR/RPMS/x86_64/freetype-2.13.2-2p.fc38.x86_64.rpm
       - run: find /usr/share/wine/fonts/times.ttf -exec mono FV/bin/FontValidator.exe -file {} -stdout \;
+      - run: mkdir temp-f1 temp-f2
       - env:
-          TEMP: $GITHUB_WORKSPACE/temp-f1
+          TEMP: ${GITHUB_WORKSPACE}/temp-f1
         run: find /usr/share/wine/fonts/times.ttf -exec mono FV/bin/FontValidator.exe -test-parms 1.py -file {} -stdout \;
       - env:
-          TEMP: $GITHUB_WORKSPACE/temp-f2
+          TEMP: ${GITHUB_WORKSPACE}/temp-f2
         run: find /usr/share/ -type f -iname '*.[to]t[fc]' -exec mono FV/bin/FontValidator.exe -test-parms 1.py -file {} -stdout \; > /dev/null
       - uses: actions/upload-artifact@v3
         with:
@@ -49,13 +50,14 @@ jobs:
       - run: sudo apt-get -y install make
       - run: make -C FV USE_MONO_SECURITY=true
       - run: ln -s ${{ github.workspace }}/FV/bin/ubuntu-18.04-x64/libfreetype.so.6.17.1 libfreetype.so.6
+      - run: mkdir temp-t1 temp-t2
       - env:
           LD_LIBRARY_PATH: ${{ github.workspace }}
         run: find /usr/share/wine/fonts/wingding.ttf -exec mono FV/bin/FontValidator.exe -file {} -stdout \;
       - env:
           TEMP: ${{ github.workspace }}/temp-t1
           LD_LIBRARY_PATH: ${{ github.workspace }}
-        run: find /usr/share/wine/fonts/wingding.ttf -exec mono FV/bin/FontValidator.exe -type -test-parms 1.py -file {} -stdout \;
+        run: find /usr/share/wine/fonts/wingding.ttf -exec mono FV/bin/FontValidator.exe -test-parms 1.py -file {} -stdout \;
       - env:
           TEMP: ${{ github.workspace }}/temp-t2
           LD_LIBRARY_PATH: ${{ github.workspace }}
