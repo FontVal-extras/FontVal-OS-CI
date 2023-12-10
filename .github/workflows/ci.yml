@@ -17,4 +17,4 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - run: cat /etc/os-release
-      - run: sudo apt-get -y install \*-fonts
+      - run: sudo apt-get -y install fonts-\*
