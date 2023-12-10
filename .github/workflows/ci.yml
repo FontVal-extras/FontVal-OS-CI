@@ -9,6 +9,9 @@ jobs:
     runs-on: ubuntu-latest
     container: fedora:39
     steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
       - run: cat /etc/os-release
       - run: dnf install -y --exclude root-fonts --skip-broken \*-opentype-fonts
       - run: dnf install -y --exclude root-fonts --skip-broken \*-fonts \*-fonts-common \*-fonts-all
@@ -17,6 +20,9 @@ jobs:
   ubuntu-job:
     runs-on: ubuntu-22.04
     steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
       - run: cat /etc/os-release
       - run: sudo apt-get -y install fonts-\*
       - run: sudo apt-get -y install mono-complete
