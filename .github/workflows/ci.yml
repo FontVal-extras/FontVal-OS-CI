@@ -24,6 +24,9 @@ jobs:
       - run: mkdir temp-f1 temp-f2
       - run: env TEMP=${GITHUB_WORKSPACE}/temp-f1 find /usr/share/wine/fonts/times.ttf -exec mono FV/bin/FontValidator.exe -test-parms 1.py -file {} -stdout \;
       - run: env TEMP=${GITHUB_WORKSPACE}/temp-f2 find /usr/share/ -type f -iname '*.[to]t[fc]' -exec mono FV/bin/FontValidator.exe -test-parms 1.py -file {} -stdout \; > /dev/null
+      - run: dnf install -y dos2unix
+      - run: rm temp-*/*.report.html temp-*/*.report.txt
+      - run: dos2unix temp-*/*.report.xml
       - uses: actions/upload-artifact@v3
         with:
           name: fedora-1
@@ -58,6 +61,9 @@ jobs:
           TEMP: ${{ github.workspace }}/temp-t2
           LD_LIBRARY_PATH: ${{ github.workspace }}
         run: find /usr/share/ -type f -iname '*.[to]t[fc]' -exec mono FV/bin/FontValidator.exe -test-parms 1.py -file {} -stdout \; > /dev/null
+      - run: sudo apt-get -y install dos2unix
+      - run: rm temp-*/*.report.html temp-*/*.report.txt
+      - run: dos2unix temp-*/*.report.xml
       - uses: actions/upload-artifact@v3
         with:
           name: ubuntu-1
