@@ -1,0 +1,27 @@
+From a1c58e9109779a2a3fb7c43098bd656b964691b6 Mon Sep 17 00:00:00 2001
+From: Hin-Tak Leung <htl10@users.sourceforge.net>
+Date: Tue, 17 Mar 2020 23:08:46 +0000
+Subject: [PATCH] remove extra for bulk testing
+
+Signed-off-by: Hin-Tak Leung <htl10@users.sourceforge.net>
+---
+ FontValidator/CmdLineInterface.cs | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/FontValidator/CmdLineInterface.cs b/FontValidator/CmdLineInterface.cs
+index c21120a4..868cb1db 100644
+--- a/FontValidator/CmdLineInterface.cs
++++ b/FontValidator/CmdLineInterface.cs
+@@ -116,6 +116,9 @@ namespace FontValidator
+                         Console.WriteLine(line);
+                     }
+                 }
++		File.Delete( sTXTFile );
++		string sHTMLFile = sReportFile.Replace(".report.xml", ".report.html");
++		File.Delete( sHTMLFile );
+             }
+         }
+ 
+-- 
+2.25.3
+
