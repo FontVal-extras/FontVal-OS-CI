@@ -1,3 +1,6 @@
 [submodule "FV"]
 	path = FV
 	url = git@github.com:HinTak/Font-Validator.git
+[submodule "AR"]
+	path = AR
+	url = git@github.com:FontVal-extras/binary-archive.git
