@@ -22,12 +22,8 @@ jobs:
       - run: dnf upgrade -y AR/RPMS/x86_64/freetype-2.13.2-2p.fc38.x86_64.rpm
       - run: find /usr/share/wine/fonts/times.ttf -exec mono FV/bin/FontValidator.exe -file {} -stdout \;
       - run: mkdir temp-f1 temp-f2
-      - env:
-          TEMP: ${GITHUB_WORKSPACE}/temp-f1
-        run: find /usr/share/wine/fonts/times.ttf -exec mono FV/bin/FontValidator.exe -test-parms 1.py -file {} -stdout \;
-      - env:
-          TEMP: ${GITHUB_WORKSPACE}/temp-f2
-        run: find /usr/share/ -type f -iname '*.[to]t[fc]' -exec mono FV/bin/FontValidator.exe -test-parms 1.py -file {} -stdout \; > /dev/null
+      - run: env TEMP=${GITHUB_WORKSPACE}/temp-f1 find /usr/share/wine/fonts/times.ttf -exec mono FV/bin/FontValidator.exe -test-parms 1.py -file {} -stdout \;
+      - run: env TEMP=${GITHUB_WORKSPACE}/temp-f2 find /usr/share/ -type f -iname '*.[to]t[fc]' -exec mono FV/bin/FontValidator.exe -test-parms 1.py -file {} -stdout \; > /dev/null
       - uses: actions/upload-artifact@v3
         with:
           name: fedora-1
