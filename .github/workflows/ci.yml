@@ -19,12 +19,7 @@ jobs:
           submodules: true
       - run: dnf install -y make
       - run: make -C FV USE_MONO_SECURITY=true
-      - run: ln -s ${{ github.workspace }}/FV/bin/fedora-fc35-x64/libfreetype.so.6.18.0 libfreetype.so.6
-      - run: ls -l libfreetype.so.6
-      - run: ls -l $GITHUB_WORKSPACE
-#      - run: git config --global --add safe.directory ${GITHUB_WORKSPACE}
-      - run: pwd
-#      - run: cp -f $GITHUB_WORKSPACE/FV/bin/fedora-fc35-x64/libfreetype.so.6.18.0 /usr/lib64/libfreetype.so.6
+      - run: ln -s $GITHUB_WORKSPACE/FV/bin/fedora-fc35-x64/libfreetype.so.6.18.0 libfreetype.so.6
       - env:
           LD_LIBRARY_PATH: $GITHUB_WORKSPACE
         run: find /usr/share/wine/fonts/times.ttf -exec mono FV/bin/FontValidator.exe -file {} -stdout \;
@@ -42,10 +37,6 @@ jobs:
       - run: sudo apt-get -y install make
       - run: make -C FV USE_MONO_SECURITY=true
       - run: ln -s ${{ github.workspace }}/FV/bin/ubuntu-18.04-x64/libfreetype.so.6.17.1 libfreetype.so.6
-      - run: ls -l libfreetype.so.6
-      - run: ls -l ${{ github.workspace }}
-      - run: pwd
-#      - run: sudo cp -f ${{ github.workspace }}/FV/bin/ubuntu-18.04-x64/libfreetype.so.6.17.1 /usr/lib64/libfreetype.so.6
       - env:
           LD_LIBRARY_PATH: ${{ github.workspace }}
         run: find /usr/share/wine/fonts/wingding.ttf -exec mono FV/bin/FontValidator.exe -file /usr/share/wine/fonts/wingding.ttf -stdout \;
