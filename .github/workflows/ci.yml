@@ -21,9 +21,10 @@ jobs:
       - run: make -C FV USE_MONO_SECURITY=true
       - run: ln -s ${{ github.workspace }}/FV/bin/fedora-fc35-x64/libfreetype.so.6.18.0 libfreetype.so.6
       - run: ls -l libfreetype.so.6
-      - run: ls -l ${{ github.workspace }}
+      - run: ls -l $GITHUB_WORKSPACE
+#      - run: git config --global --add safe.directory ${GITHUB_WORKSPACE}
       - run: pwd
-#      - run: cp -f ${{ github.workspace }}/bin/fedora-fc35-x64/libfreetype.so.6.18.0 /usr/lib64/libfreetype.so.6
+#      - run: cp -f $GITHUB_WORKSPACE/bin/fedora-fc35-x64/libfreetype.so.6.18.0 /usr/lib64/libfreetype.so.6
       - env:
           LD_LIBRARY_PATH: ${{ github.workspace }}
         run: mono FV/bin/FontValidator.exe -file /usr/share/wine/fonts/times.ttf -stdout
