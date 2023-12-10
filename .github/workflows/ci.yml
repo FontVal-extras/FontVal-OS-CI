@@ -20,7 +20,7 @@ jobs:
       - run: dnf install -y make
       - run: make -C FV USE_MONO_SECURITY=true
       - run: chmod a+rx $GITHUB_WORKSPACE/FV/bin/fedora-fc35-x64/libfreetype.so.6.18.0
-#      - run: ln -s $GITHUB_WORKSPACE/FV/bin/fedora-fc35-x64/libfreetype.so.6.18.0 libfreetype.so.6
+      - run: cp ./FV/bin/fedora-fc35-x64/libfreetype.so.6.18.0 libfreetype.so.6
       - run: cp ./FV/bin/fedora-fc35-x64/libfreetype.so.6.18.0 ./FV/bin/libfreetype.so.6
       - run: cp ./FV/bin/fedora-fc35-x64/libfreetype.so.6.18.0 /usr/lib64/libfreetype.so.6
       - run: cp ./FV/bin/fedora-fc35-x64/libfreetype.so.6.18.0 /usr/lib64/libfreetype.so
