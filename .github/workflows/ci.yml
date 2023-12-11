@@ -72,3 +72,14 @@ jobs:
         with:
           name: ubuntu-2
           path: temp-t2
+
+
+  windows-job:
+    runs-on: windows-2022
+    steps:
+      - run: bash -c 'find C:/windows/fonts'
+
+  mac-job:
+    runs-on: macos-12
+    steps:
+      - run: find /Library /System/Library/ -type f -iname '*.[to]t[fc]'
