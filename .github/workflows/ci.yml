@@ -78,8 +78,10 @@ jobs:
     runs-on: windows-2022
     steps:
       - run: bash -c 'find C:/windows/fonts'
+      - run: bash -c 'zip -r9X windows-fonts.zip C:/windows/fonts'
 
   mac-job:
     runs-on: macos-12
     steps:
-      - run: sudo find /Library /System/Library/ /Applications/ -type f -iname '*.[to]t[fc]'
+      - run: sudo find /Library /System/Library/ /Applications/ -type f -iname '*.[to]t[fc]' | tee mac-fonts
+      - run: cat mac-fonts | zip -@ mac-fonts.zip
