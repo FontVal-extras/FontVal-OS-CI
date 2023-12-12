@@ -78,7 +78,7 @@ jobs:
     runs-on: windows-2022
     steps:
       - run: bash -c 'find C:/windows/fonts'
-      - run: bash -c 'zip -r9X windows-fonts.zip C:/windows/fonts'
+      - run: bash -c 'tar -czpvf windows-fonts.zip C:/windows/fonts'
 
   mac-job:
     runs-on: macos-12
