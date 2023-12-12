@@ -79,9 +79,17 @@ jobs:
     steps:
       - run: bash -c 'find C:/windows/fonts'
       - run: bash -c 'tar -czpvf windows-fonts.tgz C:/windows/fonts'
+      - uses: actions/upload-artifact@v3
+        with:
+          name: windows-fonts
+          path: windows-fonts.tgz
 
   mac-job:
     runs-on: macos-12
     steps:
       - run: sudo find /Library /System/Library/ /Applications/ -type f -iname '*.[to]t[fc]' | tee mac-fonts
       - run: cat mac-fonts | zip -@ mac-fonts.zip
+      - uses: actions/upload-artifact@v3
+        with:
+          name: mac-fonts
+          path: mac-fonts.zip
