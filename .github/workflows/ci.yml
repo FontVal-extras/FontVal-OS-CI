@@ -14,6 +14,7 @@ jobs:
       - run: dnf install -y --exclude root-fonts --skip-broken \*-opentype-fonts
       - run: dnf install -y --exclude root-fonts --skip-broken \*-fonts \*-fonts-common \*-fonts-all
       - run: dnf install -y mono-complete
+      - run: dnf install -y texlive-collection-lang\*
       - run: dnf install --exclude texlive\*-doc -y texlive\*
       - uses: actions/checkout@v4
         with:
