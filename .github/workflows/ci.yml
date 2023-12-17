@@ -4,6 +4,9 @@ on:
   push:
     paths:
       - '.github/**'
+    label:
+      types: [created]
+
 
 jobs:
   fedora-job:
