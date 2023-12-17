@@ -47,6 +47,7 @@ jobs:
         with:
           submodules: true
       - run: cat /etc/os-release
+      - run: sudo apt-get update
       - run: sudo apt-get -y install fonts-\*
       - run: sudo apt-get -y install ttf-\*
       - run: sudo apt-get -y install mono-complete
