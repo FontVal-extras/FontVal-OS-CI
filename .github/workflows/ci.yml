@@ -54,6 +54,7 @@ jobs:
       - run: sudo apt-get update
       - run: sudo apt-get -y install fonts-\*
       - run: sudo apt-get -y install ttf-\*
+      - run: sudo apt-get -y install texlive-full
       - run: sudo apt-get -y install mono-complete
       - run: sudo apt-get -y install make
       - run: make -C FV USE_MONO_SECURITY=true
