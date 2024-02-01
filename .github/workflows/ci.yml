@@ -101,45 +101,6 @@ jobs:
           path: windows-fonts.tgz
 
   mac-job:
-    runs-on: macos-11
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          submodules: true
-      - run: sudo find /Library /System/Library/ /Applications/ -type f -iname '*.[to]t[fc]' | tee mac-fonts
-      - run: cat mac-fonts | zip -@ mac-fonts.zip
-      - uses: actions/upload-artifact@v3
-        with:
-          name: mac-fonts-11
-          path: mac-fonts.zip
-
-  mac-job:
-    runs-on: macos-12
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          submodules: true
-      - run: sudo find /Library /System/Library/ /Applications/ -type f -iname '*.[to]t[fc]' | tee mac-fonts
-      - run: cat mac-fonts | zip -@ mac-fonts.zip
-      - uses: actions/upload-artifact@v3
-        with:
-          name: mac-fonts-12
-          path: mac-fonts.zip
-
-  mac-job:
-    runs-on: macos-13
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          submodules: true
-      - run: sudo find /Library /System/Library/ /Applications/ -type f -iname '*.[to]t[fc]' | tee mac-fonts
-      - run: cat mac-fonts | zip -@ mac-fonts.zip
-      - uses: actions/upload-artifact@v3
-        with:
-          name: mac-fonts-13
-          path: mac-fonts.zip
-
-  mac-job:
     runs-on: macos-14
     steps:
       - uses: actions/checkout@v4
