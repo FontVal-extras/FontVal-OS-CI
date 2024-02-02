@@ -107,8 +107,10 @@ jobs:
         with:
           submodules: true
       - run: sudo find /Library /System/Library/ /Applications/ -type f -iname '*.[to]t[fc]' | tee mac-fonts
-      - run: cat mac-fonts | zip -@ mac-fonts.zip
+      - run: tar -cJpf mac-fonts.txz -T mac-fonts
       - uses: actions/upload-artifact@v3
         with:
           name: mac-fonts-14
-          path: mac-fonts.zip
+          path: |
+            mac-fonts
+            mac-fonts.txz
