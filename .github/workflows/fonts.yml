@@ -23,12 +23,13 @@ jobs:
           path: windows-fonts.tgz
 
   mac-job:
-    runs-on: macos-12
+    runs-on: macos-14
     steps:
       - uses: actions/checkout@v4
         with:
           submodules: true
       - run: sudo find /Library /System/Library/ /Applications/ -type f -iname '*.[to]t[fc]' | tee mac-fonts
+      - run: sudo find /System/Library/Fonts/ /Library/Fonts -type f  -not -iname '*.[to]t[fc]' | tee -a mac-fonts
       - run: tar -cJpf mac-fonts.txz -T mac-fonts
       - uses: actions/upload-artifact@v4
         with:
