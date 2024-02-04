@@ -23,7 +23,7 @@ jobs:
           path: windows-fonts.tgz
 
   mac-job:
-    runs-on: macos-13
+    runs-on: macos-12
     steps:
       - uses: actions/checkout@v4
         with:
@@ -33,7 +33,7 @@ jobs:
       - run: tar -cJpf mac-fonts.txz -T mac-fonts
       - uses: actions/upload-artifact@v4
         with:
-          name: mac-fonts-13
+          name: mac-fonts-12
           path: |
             mac-fonts
             mac-fonts.txz
