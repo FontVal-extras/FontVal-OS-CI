@@ -6,8 +6,8 @@ on:
       - '.github/**'
     label:
       types: [created]
-    tags:
-      - RUN*
+#    tags:
+#      - RUN*
 
 
 jobs:
