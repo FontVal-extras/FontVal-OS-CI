@@ -36,11 +36,11 @@ jobs:
       - run: dnf install -y dos2unix
       - run: rm temp-*/*.report.html temp-*/*.report.txt
       - run: dos2unix temp-*/*.report.xml
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: fedora-1
           path: temp-f1
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: fedora-2
           path: temp-f2
@@ -76,11 +76,11 @@ jobs:
       - run: sudo apt-get -y install dos2unix
       - run: rm temp-*/*.report.html temp-*/*.report.txt
       - run: dos2unix temp-*/*.report.xml
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: ubuntu-1
           path: temp-t1
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: ubuntu-2
           path: temp-t2
