@@ -54,7 +54,7 @@ jobs:
           submodules: true
       - run: cat /etc/os-release
       - run: sudo apt-get update
-      - run: sudo apt-get -y upgrade fonts-ubuntu
+      - run: sudo apt-get -y install fonts-ubuntu
       - run: sudo apt-mark hold fonts-ubuntu
       # on ubuntu-24.04, "fonts-ubuntu" conflicts with "fonts-ubuntu-classic" (the older ubuntu fonts)
       - run: sudo apt-get --fix-broken -y install fonts-\*
